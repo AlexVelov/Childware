@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ChildReward</title>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+        <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.1.min.css">
+        <link rel="stylesheet" href="css/jqm-demos.css">
+        <script src="js/index.js"></script>
+        <script src="js/jquery.mobile-1.4.1.min.js"></script>
+        <script src="123cordova-3.4.0.js"></script>
+        <script>
+            function facebook_login()
+            {
+                window.location = "https://www.facebook.com/dialog/oauth?client_id=210379902502481&display=touch&response_type=token&redirect_uri=http://logicupsolutions.com/m/dashboard.html?type=f";
+            }
+            function google_login()
+            {
+                //https://accounts.google.com/o/oauth2/auth?client_id=584454706926-ak7ghkgd2dmgjle3tl0u8ijrfu3i64ir.apps.googleusercontent.com&scope=openid profile email&response_type=token&redirect_uri=http://www.logicupsolutions.com/m/dashboard.html&login_hint=jackrose3143@gmail.com
+                window.location = "https://accounts.google.com/o/oauth2/auth?client_id=584454706926-ak7ghkgd2dmgjle3tl0u8ijrfu3i64ir.apps.googleusercontent.com&scope=openid profile email&response_type=token&redirect_uri=http://www.logicupsolutions.com/m/dashboard.html";
+            }
+        </script>
+    </head>
+    <body>
+        <div data-role="page" class="jqm-demos jqm-panel-page" data-quicklinks="true">
+
+            <!-- Note: all other panels are at the end of the page, scroll down  -->
+
+
+            <div role="main" class="ui-content jqm-content">
+
+                <p style="text-align: center">
+                    <img width="100%" src="assets/logo.png">
+                    <img width="40%" src="assets/Gift.png">
+                </p>
+
+                <div data-demo-html="true">
+
+                    <a href="#" onclick="facebook_login()" class="ui-btn ui-corner-all">Login With Facebook</a>
+                    <a href="#" onclick="google_login()" class="ui-btn ui-corner-all">Login With Google</a>
+                    <a href="#" class="ui-btn ui-corner-all">Login With Microsoft</a>
+
+                </div>
+
+                <button style="display: none;" onclick="getLoginStatus()">Get login</button>
+
+
+            </div><!-- /content -->
+
+
+            <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+                <p>this is footer</p>
+                <p>LogicUp Solutions</p>
+            </div><!-- /footer -->
+            <!-- TODO: This should become an external panel so we can add input to markup (unique ID) -->
+
+
+
+            <!-- Here are a bunch of panels at the end, just before the close page tag  -->
+
+        </div><!-- /page -->
+
+    </body>
+</html>

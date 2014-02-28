@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ChildRewards</title>
+        <link rel="shortcut icon" href="../favicon.ico">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+        <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.1.min.css">
+        <link rel="stylesheet" href="css/jqm-demos.css">
+        <script src="js/jquery.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/jquery.mobile-1.4.1.min.js"></script>
+        <script>
+            //Get Loged User Profile
+            //https://graph.facebook.com/me/?access_token=CAACZCVuNbRlEBACFVZAWLOHEb2S6vQG035NXtAmdJlg4D8blLtBHr66wxnBASLwfCg0gWd1nI0VixwSLSbiMx878XJsnsUebok2DGZCKg6tawiTB7WiMCmDZAVr7gvSxaqCq6S7gyZB6oxzCv9O91MhcwBSZApXSoD774Iv8gZCvRZAi6y0cEs1k
+            //https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=ya29.1.AADtN_W4FGeYNu8fmpgmnmtfH39opAjCrx5VK92ZkrouiomqAGeh2tCmab8esU0
+            var token = '';
+
+            function logout()
+            {
+                var qs = getQueryStringsForType();
+                login_type = qs["type"];
+                if (login_type == "f")
+                {
+                    window.location = "https://www.facebook.com/logout.php?next=http://logicupsolutions.com/m/index.html&access_token=" + token;
+                }
+                else
+                {
+                    window.location = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://logicupsolutions.com/m/index.html"
+                }
+            }
+            function getQueryStringsForType() {
+                var assoc = {};
+                var decode = function(s) {
+                    return decodeURIComponent(s.replace(/\+/g, " "));
+                };
+                var queryString = location.search.substring(1);
+                var keyValues = queryString.split('&');
+
+                for (var i in keyValues) {
+                    var key = keyValues[i].split('=');
+                    if (key.length > 1) {
+                        assoc[decode(key[0])] = decode(key[1]);
+                    }
+                }
+                return assoc;
+            }
+            function getQueryStringsForToken() {
+                var vars = [], hash;
+                var hashes = window.location.href.slice(window.location.href.indexOf('#') + 1).split('&');
+                for (var i = 0; i < hashes.length; i++)
+                {
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            }
+            function getToken()
+            {
+                var qs = getQueryStringsForToken();
+                token = qs["access_token"];
+                //alert("Your Token : " + token);
+            }
+            
+        </script>
+    </head>
+    <body onload="getToken()">
+        <div data-role="page" class="jqm-demos jqm-panel-page" data-quicklinks="true">
+
+            <!-- Note: all other panels are at the end of the page, scroll down  -->
+
+            <div data-role="header" class="jqm-header">
+                <h2 style="text-align: left;margin-left: 10px;"><a href="#" title="jQuery Mobile Demos home"><img src="assets/logo-black.png" alt="jQuery Mobile"></a></h2>
+                <a href="#" style="display: none;" title="jQuery Mobile Demos home"><img src="assets/logo-black.png" alt="jQuery Mobile">Menu</a>
+                <a href="#" class="jqm-search-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-search ui-nodisc-icon ui-alt-icon ui-btn-right">Search</a>
+            </div><!-- /header -->
+
+            <div role="main" class="ui-content jqm-content">
+
+                Welcome, Jack Rose !
+
+                <br><br>
+
+                <a href="#" class="ui-btn ui-corner-all">Check Rewards</a>
+                <a href="#" class="ui-btn ui-corner-all">Add Child</a>
+                <a href="#" class="ui-btn ui-corner-all">Set Reward</a>
+                <a href="#" class="ui-btn ui-corner-all">Learn More</a>
+                <a href="#" onclick="logout()" class="ui-btn ui-corner-all">Logout</a>
+
+            </div><!-- /content -->
+
+
+            <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+                <p>this is footer</p>
+                <p>LogicUp Solutions</p>
+            </div><!-- /footer -->
+            <!-- TODO: This should become an external panel so we can add input to markup (unique ID) -->
+
+
+
+            <!-- Here are a bunch of panels at the end, just before the close page tag  -->
+
+        </div><!-- /page -->
+
+    </body>
+</html>
